@@ -1,8 +1,8 @@
 {
-  "name": "backend",
+  "name": "nasa-project-api",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
     "watch": "nodemon server.js",
     "start": "node server.js"
