@@ -8,11 +8,16 @@ const PORT = process.env.PORT || 8000;
 
 const server = http.createServer(application);
 
-const startServer = async () => {
-  await LaodData();
-  server.listen(PORT, () => {
-    console.log(`http server is running on PORT : ${PORT}`);
-  });
+const startServer = () => {
+  try {
+    LaodData();
+
+    server.listen(PORT, () => {
+      console.log(`http server is running on PORT : ${PORT}`);
+    });
+  } catch (error) {
+    console.log(`Error was found : ${error}`);
+  }
 };
 
 startServer();

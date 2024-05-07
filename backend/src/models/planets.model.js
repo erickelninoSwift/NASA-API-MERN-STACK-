@@ -13,31 +13,27 @@ const isHabitable = (planet) => {
   );
 };
 
-function LaodData() {
-  return new Promise((resolve, reject) => {
-    fs.createReadStream(
+const LaodData = async () => {
+  return await fs
+    .createReadStream(
       path.join(__dirname, "..", "..", "data", "kepler_data.csv")
     )
-      .pipe(
-        parse({
-          comment: "#",
-          columns: true,
-        })
-      )
-      .on("data", (data) => {
-        if (isHabitable(data)) {
-          return habitablePlanets.push(data);
-        }
+    .pipe(
+      parse({
+        comment: "#",
+        columns: true,
       })
-      .on("end", () => {
-        resolve();
-      })
-      .on("error", (error) => {
-        console.log(`Error was found while fetching planets ${error}`);
-        reject(error);
-      });
-  });
-}
+    )
+    .on("data", (data) => {
+      if (isHabitable(data)) {
+        return habitablePlanets.push(data);
+      }
+    })
+    .on("end", () => {})
+    .on("error", (error) => {
+      console.log(`Error was found while fetching planets ${error}`);
+    });
+};
 
 module.exports = {
   LaodData,
