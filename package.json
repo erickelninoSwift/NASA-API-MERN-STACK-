@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install-server": "npm install --prefix backend",
     "install-client": "npm install --prefix frontend",
+    "install-server": "npm install --prefix backend",
     "server": "npm run watch --prefix backend",
     "client": "npm run start --prefix frontend",
-    "all": "npm run server & npm run client"
+    "all": "npm run server & npm run client",
+    "production-frontend": "npm run build --prefix frontend",
+    "deploy-production": "npm run production-frontend && npm run server"
   },
   "keywords": [],
   "author": "",

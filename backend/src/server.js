@@ -11,7 +11,7 @@ const server = http.createServer(application);
 const startServer = () => {
   try {
     LaodData();
-
+    console.log("data received");
     server.listen(PORT, () => {
       console.log(`http server is running on PORT : ${PORT}`);
     });
