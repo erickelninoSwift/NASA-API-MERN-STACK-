@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "install-server": "npm install --prefix backend",
+    "install-client": "npm install --prefix frontend",
     "server": "npm run watch --prefix backend",
     "client": "npm run start --prefix frontend",
     "all": "npm run server & npm run client"
