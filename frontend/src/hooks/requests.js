@@ -9,8 +9,8 @@ async function httpGetPlanets() {
 
 async function httpGetLaunches() {
   const response = await fetch(`${API_URl}/launches`, { method: "GET" });
-  console.log(await response.json());
-  return await response.json();
+  const data = await response.json();
+  return data;
 }
 
 async function httpSubmitLaunch(launch) {

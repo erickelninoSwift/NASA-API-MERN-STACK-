@@ -8,7 +8,8 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
 
   const getLaunches = useCallback(async () => {
     const fetchedLaunches = await httpGetLaunches();
-    if (fetchedLaunches) {
+
+    if (fetchedLaunches.length > 0) {
       saveLaunches(fetchedLaunches);
     }
   }, []);
