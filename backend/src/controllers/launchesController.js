@@ -1,7 +1,7 @@
-const { launches } = require("../models/launches.model");
+const { DataSend } = require("../models/launches.model");
 
-const launchesPlanets = (reuqest, response) => {
-  return response.status(200).json(Array.from(launches.values()));
+const httpLaunchesPlanets = (reuqest, response) => {
+  return response.status(200).json(DataSend());
 };
 
-module.exports = { launchesPlanets };
+module.exports = { httpLaunchesPlanets };

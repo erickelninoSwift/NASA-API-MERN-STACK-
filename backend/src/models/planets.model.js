@@ -34,8 +34,10 @@ const LaodData = async () => {
       console.log(`Error was found while fetching planets ${error}`);
     });
 };
-
+const getAllMyPlanets = () => {
+  return habitablePlanets;
+};
 module.exports = {
   LaodData,
-  planets: habitablePlanets,
+  getAllMyPlanets,
 };

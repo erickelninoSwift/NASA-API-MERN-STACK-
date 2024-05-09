@@ -1,4 +1,4 @@
-const launches = new Map();
+const httpGetAllLaunches = new Map();
 
 const launch = {
   flightNumber: 100,
@@ -11,6 +11,10 @@ const launch = {
   success: true,
 };
 
-launches.set(launch.flightNumber, launch);
+httpGetAllLaunches.set(launch.flightNumber, launch);
 
-module.exports = { launches };
+const DataSend = () => {
+  return Array.from(httpGetAllLaunches.values());
+};
+
+const allData = (module.exports = { DataSend });

@@ -1,7 +1,7 @@
 const express = require("express");
-const { launchesPlanets } = require("../../controllers/launchesController");
+const { httpLaunchesPlanets } = require("../../controllers/launchesController");
 const launchRouter = express.Router();
 
-launchRouter.get("/launches", launchesPlanets);
+launchRouter.get("/launches", httpLaunchesPlanets);
 
 module.exports = launchRouter;
