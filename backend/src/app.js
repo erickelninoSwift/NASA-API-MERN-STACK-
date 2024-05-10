@@ -13,8 +13,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "..", "public")));
 // get All planets Routes
 // =====================
-app.use(getAllplanetsRouter);
-app.use(allLaunchesRouter);
+app.use("/planets", getAllplanetsRouter);
+app.use("/launches", allLaunchesRouter);
 app.get("/*", (requests, response) => {
   return response.sendFile(path.join(__dirname, "..", "public", "index.html"));
 });
