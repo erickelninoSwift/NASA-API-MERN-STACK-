@@ -1,5 +1,5 @@
 const httpGetAllLaunches = new Map();
-
+let latestFlightNumber = 100;
 const launch = {
   flightNumber: 100,
   mission: "kepler",
@@ -13,8 +13,21 @@ const launch = {
 
 httpGetAllLaunches.set(launch.flightNumber, launch);
 
+const addNewLauch = (launch) => {
+  latestFlightNumber++;
+  return httpGetAllLaunches.set(
+    latestFlightNumber,
+    Object.assign(launch, {
+      flightNumber: latestFlightNumber,
+      customer: ["Zero to mastery", "NASA"],
+      upcoming: true,
+      success: true,
+    })
+  );
+};
+
 const DataSend = () => {
   return Array.from(httpGetAllLaunches.values());
 };
 
-const allData = (module.exports = { DataSend });
+module.exports = { DataSend, addNewLauch };
