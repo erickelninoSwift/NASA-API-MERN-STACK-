@@ -15,23 +15,26 @@ async function httpGetLaunches() {
 
 async function httpSubmitLaunch(launch) {
   // TODO: Once API is ready.
+
   // Submit given launch data to launch system.
   try {
     return await fetch(`${API_URl}/launches`, {
-      method: "POST",
+      method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(launch),
     });
   } catch (error) {
-    console.error(`Error found : ${error}`);
+    console.log(`Error found : ${error}`);
   }
 }
 
 async function httpAbortLaunch(id) {
   // TODO: Once API is ready.
-  // Delete launch with given ID.
+  return await fetch(`${API_URl}/launches/:${id}`, {
+    method: "DELETE",
+  });
 }
 
 export { httpGetPlanets, httpGetLaunches, httpSubmitLaunch, httpAbortLaunch };

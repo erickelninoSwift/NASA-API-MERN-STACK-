@@ -11,7 +11,7 @@ const httpAddNewLauch = (request, response) => {
     !launch.mission ||
     !launch.launchDate ||
     !launch.rocket ||
-    !launch.destination
+    !launch.target
   ) {
     return response.status(400).json({
       message: "BAd Request : Data field empty",
