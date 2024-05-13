@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const getAllplanetsRouter = require("./routes/planetsrouter/planets.router");
 const allLaunchesRouter = require("./routes/launches/launches.routes");
 const app = express();
-app.use(morgan("combined"));
+app.use(morgan("tiny"));
 app.use(cors());
 
 app.use(express.json());

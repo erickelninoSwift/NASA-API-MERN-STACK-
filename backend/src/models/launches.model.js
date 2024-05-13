@@ -30,4 +30,18 @@ const DataSend = () => {
   return Array.from(httpGetAllLaunches.values());
 };
 
-module.exports = { DataSend, addNewLauch };
+const existLaunchWithId = (launchID) => {
+  const allData = DataSend().find(
+    (data) => data.flightNumber === Number(launchID)
+  );
+  return allData ? true : false;
+};
+
+const abortMission = (launchID) => {
+  const aborted = httpGetAllLaunches.get(Number(launchID));
+  aborted.success = false;
+  aborted.upcoming = false;
+  return aborted;
+};
+
+module.exports = { existLaunchWithId, DataSend, addNewLauch, abortMission };

@@ -1,4 +1,9 @@
-const { DataSend, addNewLauch } = require("../models/launches.model");
+const {
+  DataSend,
+  addNewLauch,
+  existLaunchWithId,
+  abortMission,
+} = require("../models/launches.model");
 
 const httpLaunchesPlanets = (reuqest, response) => {
   return response.status(200).json(DataSend());
@@ -34,4 +39,22 @@ const httpAddNewLauch = (request, response) => {
   });
 };
 
-module.exports = { httpLaunchesPlanets, httpAddNewLauch };
+const httpDeleteLaunch = (request, response) => {
+  const { id } = request.params;
+  const findMission = existLaunchWithId(id);
+  if (!findMission) {
+    return response.status(404).json({
+      deleted: "No",
+      message: "Mission was not found ",
+    });
+  }
+
+  const aborted = abortMission(id);
+  console.log(aborted);
+  return response.status(200).json({
+    deleted: "yes",
+    message: aborted,
+  });
+};
+
+module.exports = { httpLaunchesPlanets, httpAddNewLauch, httpDeleteLaunch };
